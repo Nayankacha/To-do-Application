@@ -1,0 +1,68 @@
+<mat-list-item class="todo-item">
+  <div class="task-container">
+    <div class="task-content">
+      <span class="task-number">{{ index + 1 }}.</span>
+
+      <!-- Normal Task View -->
+      <ng-container *ngIf="!editMode; else editModeTemplate">
+        <span class="task-title" title="{{ task.title }}">
+          {{ task.title }}
+        </span>
+      </ng-container>
+
+      <!-- Edit Mode -->
+      <ng-template #editModeTemplate>
+        <mat-form-field class="edit-field" appearance="outline">
+          <input
+            matInput
+            [(ngModel)]="editedTitle"
+            placeholder="Edit task..."
+            (keyup.enter)="saveEdit()"
+          />
+        </mat-form-field>
+      </ng-template>
+    </div>
+
+    <!-- Right Side Buttons -->
+    <div class="task-actions">
+      <ng-container *ngIf="!editMode; else editActions">
+        <button
+          mat-icon-button
+          color="primary"
+          matTooltip="Edit Task"
+          (click)="enableEdit()"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          color="warn"
+          matTooltip="Delete Task"
+          (click)="deleteTask(task.id)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </ng-container>
+
+      <ng-template #editActions>
+        <button
+          mat-icon-button
+          color="primary"
+          matTooltip="Save"
+          (click)="saveEdit()"
+        >
+          <mat-icon>check</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="accent"
+          matTooltip="Cancel"
+          (click)="cancelEdit()"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </ng-template>
+    </div>
+  </div>
+</mat-list-item>

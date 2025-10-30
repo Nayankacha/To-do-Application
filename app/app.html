@@ -1,0 +1,21 @@
+<div class="todo-container">
+  <h1>My To-Do Application</h1>
+
+  <!-- Toggle button -->
+  <button class="add-btn" (click)="toggleForm()">
+    {{ openForm ? 'Close' : 'Add New Task' }}
+  </button>
+
+  <!-- Task input section -->
+  <div *ngIf="openForm" class="form-section">
+    <input
+      type="text"
+      placeholder="Enter a new task"
+      [(ngModel)]="newTaskTitle"
+    />
+    <button (click)="addTask()">Add</button>
+  </div>
+
+  <!-- Task list -->
+  <app-todo-list></app-todo-list>
+</div>

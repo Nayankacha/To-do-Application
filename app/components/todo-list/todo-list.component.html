@@ -1,0 +1,41 @@
+<div class="todo-list-container">
+  <div
+    class="task-card"
+    *ngFor="let task of tasks; let i = index"
+  >
+    <div class="task-left">
+      <div class="task-number">{{ i + 1 }}</div>
+
+      <!-- Editable or display mode -->
+      <div class="task-title" *ngIf="editingTaskId !== task.id">
+        {{ task.title }}
+      </div>
+
+      <input
+        *ngIf="editingTaskId === task.id"
+        [(ngModel)]="editedTitle"
+        class="edit-input"
+        type="text"
+        (keyup.enter)="saveEdit(task)"
+      />
+    </div>
+
+    <div class="task-right">
+      <button *ngIf="editingTaskId !== task.id" mat-icon-button (click)="startEditing(task)">
+        <mat-icon>edit</mat-icon>
+      </button>
+
+      <button *ngIf="editingTaskId === task.id" mat-icon-button (click)="saveEdit(task)">
+        <mat-icon>check</mat-icon>
+      </button>
+
+      <button *ngIf="editingTaskId === task.id" mat-icon-button color="warn" (click)="cancelEdit()">
+        <mat-icon>close</mat-icon>
+      </button>
+
+      <button mat-icon-button color="warn" (click)="deleteTask(task.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

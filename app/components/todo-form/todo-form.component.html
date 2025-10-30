@@ -1,0 +1,25 @@
+<mat-card class="todo-form-card">
+  <form (ngSubmit)="addTask()" class="todo-form">
+    <mat-form-field appearance="fill" class="task-input">
+      <mat-label>What's your next task?</mat-label>
+      <input
+        matInput
+        placeholder="Enter your task here..!!"
+        [(ngModel)]="newTaskTitle"
+        name="taskTitle"
+        required
+      />
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!newTaskTitle.trim()"
+      class="add-btn"
+    >
+      <mat-icon>add</mat-icon>
+      Add Task
+    </button>
+  </form>
+</mat-card>

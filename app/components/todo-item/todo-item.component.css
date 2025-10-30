@@ -1,0 +1,70 @@
+.todo-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.todo-item:hover {
+  background-color: #f8f9fa;
+}
+
+.task-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.task-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.task-number {
+  font-weight: 600;
+  color: #3f51b5;
+  min-width: 25px;
+  text-align: right;
+}
+
+.task-title {
+  flex: 1;
+  font-size: 16px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.edit-field {
+  flex: 1;
+  min-width: 180px;
+}
+
+.task-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* 🌐 Responsive Styles */
+@media (max-width: 600px) {
+  .task-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-actions {
+    align-self: flex-end;
+  }
+
+  .task-title {
+    font-size: 15px;
+  }
+}
